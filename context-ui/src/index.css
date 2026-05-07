@@ -1,0 +1,306 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0f172a;
+  --card: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.08);
+
+  --text: #f8fafc;
+  --muted: #94a3b8;
+
+  --primary: #6366f1;
+  --secondary: #8b5cf6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: sans-serif;
+
+  background:
+    radial-gradient(circle at top left,
+      #312e81 0%,
+      transparent 30%),
+    radial-gradient(circle at bottom right,
+      #581c87 0%,
+      transparent 30%),
+    var(--bg);
+
+  color: var(--text);
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+  /* CENTER EVERYTHING */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* MAIN APP CONTAINER */
+
+#root {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px 20px;
+}
+
+/* PAGE CONTAINER */
+
+.page-center {
+  width: 100%;
+
+  max-width: 1200px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111827;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #6366f1,
+    #8b5cf6
+  );
+
+  border-radius: 999px;
+}
+
+/* GLASS */
+
+.glass {
+  background: var(--card);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid var(--border);
+}
+
+/* CARD */
+
+.card {
+  width: auto;
+  height: 260px;
+  border-radius: 20px;
+  gap: calc(40px);
+
+  overflow: hidden;
+
+  transition: 0.3s ease;
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  background: rgba(255,255,255,0.04);
+
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.25);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 14px 30px rgba(99,102,241,0.18);
+}
+
+/* IMAGE */
+
+.product-image {
+  width: 100%;
+
+  height: 140px;
+
+  object-fit: cover;
+
+  border-radius: 16px;
+
+  transition: 0.3s ease;
+}
+
+.card:hover .product-image {
+  transform: scale(1.03);
+}
+
+/* BUTTON */
+
+.primary-btn {
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--secondary)
+  );
+
+  color: white;
+
+  border: none;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.primary-btn:hover {
+  opacity: 0.92;
+
+  transform: scale(1.02);
+}
+
+/* INPUT */
+
+.custom-input {
+  background: rgba(255,255,255,0.08);
+
+  border: 1px solid transparent;
+
+  color: white;
+
+  transition: 0.25s ease;
+}
+
+.custom-input:focus {
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 0 3px rgba(99,102,241,0.15);
+}
+
+.custom-input::placeholder {
+  color: var(--muted);
+}
+
+/* TEXT */
+
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    #818cf8,
+    #c084fc
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* GRID CENTER */
+
+.center-grid {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 24px;
+}
+
+/* HERO */
+
+.hero-section {
+  position: relative;
+
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: "";
+
+  position: absolute;
+
+  width: 250px;
+  height: 250px;
+
+  background: #8b5cf6;
+
+  filter: blur(110px);
+
+  opacity: 0.2;
+
+  top: -100px;
+  right: -100px;
+}
+
+/* ANIMATION */
+
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  body {
+    align-items: flex-start;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 240px;
+  }
+
+  .page-center {
+    padding-top: 20px;
+  }
+}
